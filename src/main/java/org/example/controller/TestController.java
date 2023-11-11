@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-  @Value("${phrase}")
+  @Value("${phrase:nothing}")
   private String phrase;
 
   @GetMapping
