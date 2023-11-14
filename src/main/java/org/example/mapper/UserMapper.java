@@ -9,9 +9,8 @@ import org.mapstruct.Mapping;
 public interface UserMapper {
 
   @Mapping(target = "userId", ignore = true)
-  User UserDtoToUser(UserDto userDto);
+  User userDtoToUser(UserDto userDto);
 
-  @Mapping(target = "userId", ignore = true)
-  UserDto UserToUserDto(User user);
+  UserDto userToUserDto(User user);
 
 }

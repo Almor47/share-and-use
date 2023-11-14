@@ -2,7 +2,6 @@ package org.example.service;
 
 import java.util.List;
 import org.example.dto.UserDto;
-import org.mapstruct.control.MappingControl.Use;
 
 public interface UserService {
 
@@ -15,4 +14,5 @@ public interface UserService {
   UserDto updateUser(UserDto userDto, Integer userId);
 
   void deleteUserById(Integer userId);
+
 }

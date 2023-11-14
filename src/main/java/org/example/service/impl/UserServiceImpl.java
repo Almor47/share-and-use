@@ -24,33 +24,33 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public List<UserDto> getAllUsers() {
-    return userRepository.findAll().stream().map(mapper::UserToUserDto).toList();
+    return userRepository.findAll().stream().map(mapper::userToUserDto).toList();
   }
 
   @Override
   public UserDto getUserById(Integer userId) {
-    return mapper.UserToUserDto(userRepository.findById(userId)
+    return mapper.userToUserDto(userRepository.findById(userId)
         .orElseThrow(() -> new NotFoundException("Пользователь с " + userId + " не найден")));
   }
 
   @Override
   @Transactional
   public UserDto addUser(UserDto userDto) {
-    User userToSave = mapper.UserDtoToUser(userDto);
+    User userToSave = mapper.userDtoToUser(userDto);
     userToSave.setRegistrationDate(LocalDateTime.now());
-    return mapper.UserToUserDto(userRepository.save(userToSave));
+    return mapper.userToUserDto(userRepository.save(userToSave));
   }
 
   @Override
   @Transactional
   public UserDto updateUser(UserDto userDto, Integer userId) {
-    User userDb = mapper.UserDtoToUser(getUserById(userId));
+    User userDb = mapper.userDtoToUser(getUserById(userId));
     FieldUpdater.updateField(userDb::setUserName, userDto.getUserName());
     FieldUpdater.updateField(userDb::setUserSurname, userDto.getUserSurname());
     FieldUpdater.updateField(userDb::setUserGender, userDto.getUserGender());
     FieldUpdater.updateField(userDb::setCity,userDto.getCity());
     FieldUpdater.updateField(userDb::setRegistrationDate, userDto.getRegistrationDate());
-    return mapper.UserToUserDto(userRepository.save(userDb));
+    return mapper.userToUserDto(userRepository.save(userDb));
   }
 
   @Override

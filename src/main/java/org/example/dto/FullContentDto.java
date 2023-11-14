@@ -1,6 +1,5 @@
 package org.example.dto;
 
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,18 +12,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserDto {
+public class FullContentDto {
 
-  Integer userId;
+  String password;
 
-  String userName;
-
-  String userSurname;
-
-  String userGender;
-
-  String city;
-
-  LocalDateTime registrationDate;
-
+  ContentTypeDto contentType;
 }
